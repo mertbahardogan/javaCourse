@@ -42,5 +42,10 @@ public class Campaign implements Entity {
 	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
+	
+	@Override
+	public String toString() {
+		return "Info: [id=" + id + ", name=" + name + ",discount=" + discount + "]";
+	}
 
 }

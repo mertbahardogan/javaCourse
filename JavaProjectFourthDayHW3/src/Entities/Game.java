@@ -6,20 +6,16 @@ public class Game implements Entity {
 	private int id;
 	private String name;
 	private double unitPrice;
-	
-	public Game(){}
+
+
+	public Game() {
+	}
 
 	public Game(int id, String name, double unitPrice) {
 		this();
 		this.id = id;
 		this.name = name;
 		this.unitPrice = unitPrice;
-	}
-	
-	//TRYING
-	@Override
-	public String toString() {
-		return "GameItem [id=" + id + ", name=" + name + ",unit price=" + unitPrice + "]";
 	}
 
 	public int getId() {
@@ -46,5 +42,9 @@ public class Game implements Entity {
 		this.unitPrice = unitPrice;
 	}
 	
+	@Override
+	public String toString() {
+		return "Info: [id=" + id + ", name=" + name + ",unit price=" + unitPrice + "]";
+	}
 
 }

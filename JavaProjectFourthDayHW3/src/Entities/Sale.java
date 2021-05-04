@@ -2,55 +2,69 @@ package Entities;
 
 import Abstract.Entity;
 
-public class Sale implements Entity{
+public class Sale implements Entity {
 
-   private int id;
-   private User user;
-   private Campaign campaign;
-   private Game game;
-   
-   public Sale() {
-	   
-   }
+	private int id;
+	private User user;
+	private Campaign campaign;
+	private Game game;
 
-public Sale(int id, User user, Campaign campaign, Game game) {
-	super();
-	this.id = id;
-	this.user = user;
-	this.campaign = campaign;
-	this.game = game;
-}
+	public Sale() {
 
-public int getId() {
-	return id;
-}
+	}
 
-public void setId(int id) {
-	this.id = id;
-}
+	public Sale(int id, User user,Campaign campaign, Game game) {
+		this();
+		this.id = id;
+		this.user = user;
+		this.campaign = campaign;
+		this.game = game;
+	}
 
-public User getUser() {
-	return user;
-}
+	public int getId() {
+		return id;
+	}
 
-public void setUser(User user) {
-	this.user = user;
-}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-public Campaign getCampaign() {
-	return campaign;
-}
+	public User getUser() {
+		return user;
+	}
 
-public void setCampaign(Campaign campaign) {
-	this.campaign = campaign;
-}
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-public Game getGame() {
-	return game;
-}
+	public Campaign getCampaign() {
+		return campaign;
+	}
 
-public void setGame(Game game) {
-	this.game = game;
-}
-   
+	public void setCampaign(Campaign campaign) {
+		this.campaign = campaign;
+	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	public double getPriceWithDiscount() {
+		return game.getUnitPrice() - (game.getUnitPrice() * campaign.getDiscount() / 100);
+	}
+
+	@Override
+	public String toString() {
+		if (campaign != null) {
+			return "Info: [ID=" + id + ", GameName=" + game.getName() + ", CustomerName=" + user.getFirstName()
+					+ ",LastPrice=" + getPriceWithDiscount() + ", Discount=" + campaign.getDiscount() + "]";
+		} else {
+			return "Info: [ID=" + id + ", GameName=" + game.getName() + ", CustomerName=" + user.getFirstName()
+					+ ",Price=" + game.getUnitPrice() + "There is no campaign" + "]";
+		}
+	}
 }
