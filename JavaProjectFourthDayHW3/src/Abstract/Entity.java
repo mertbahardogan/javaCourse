@@ -1,4 +1,4 @@
-package Abstracts;
+package Abstract;
 
 public interface Entity {
 
