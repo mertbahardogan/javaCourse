@@ -19,6 +19,7 @@ public class Main {
 		student1.setEmail("mbahardogan@hotmail.com");
 		student1.setTakenCourse(takenCources);
 		
+		
 		StudentManager studentManager=new StudentManager();
 		studentManager.add(student1);
 		studentManager.getCourses(student1);
