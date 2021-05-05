@@ -11,7 +11,7 @@ public class Main {
 		User userValid = new User(1, "Mert", "Bahardoðan", LocalDate.of(1996, 01, 01), "12312312323",false);
 		User userInvalid = new User(2, "Emre", "Yanlýþ", LocalDate.of(2010, 01, 01), "123",false);
 		UserManager userManager = new UserManager(new CheckServiceAdapter());
-		userManager.add(userValid);
+		userManager.add(userInvalid);
 		
 		Game game1=new Game(1,"GTAV",250);
 		GameManager gameManager =new GameManager();
