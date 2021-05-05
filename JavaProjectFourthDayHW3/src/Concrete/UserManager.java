@@ -15,9 +15,11 @@ public class UserManager implements UserService{
 	@Override
 	public void add(User user) throws Exception {
 		if(userCheckService.checkUserIsValid(user)) {
+			user.setValid(true);
 			System.out.println("New user created "+user.toString());
 		}
 		else {
+			user.setValid(false);
 			throw new Exception("Invalid Person");
 		}
 		

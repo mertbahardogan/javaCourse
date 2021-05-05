@@ -10,17 +10,19 @@ public class User implements Entity {
 	private String lastName;
 	private LocalDate dateOfBirth;
 	private String nationalId;
+	private boolean isValid;
 
 	public User() {
 	}
 
-	public User(int id, String firstName, String lastName, LocalDate dateOfBirth, String nationalId) {
+	public User(int id, String firstName, String lastName, LocalDate dateOfBirth, String nationalId,boolean isValid) {
 		this();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.nationalId = nationalId;
+		this.isValid=isValid;
 	}
 
 	public int getId() {
@@ -62,6 +64,14 @@ public class User implements Entity {
 	public void setNationalId(String nationalId) {
 		this.nationalId = nationalId;
 	}
+	public boolean getIsValid() {
+		return isValid;
+	}
+
+	public void setValid(boolean isValid) {
+		this.isValid = isValid;
+	}
+
 	@Override
 	public String toString() {
 		return "Info: [ID=" + id + ", Name=" + firstName + lastName +"Date of Birth=" + dateOfBirth + "]";
