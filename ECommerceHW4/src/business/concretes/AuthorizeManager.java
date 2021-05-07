@@ -1,9 +1,9 @@
 package business.concretes;
 
-import business.abstracts.AuthorizeService;
 import business.abstracts.EmailLinkService;
 import business.abstracts.UserService;
 import business.abstracts.ValidationService;
+import core.AuthorizeService;
 import entities.concretes.User;
 
 public class AuthorizeManager implements AuthorizeService {
@@ -24,23 +24,28 @@ public class AuthorizeManager implements AuthorizeService {
 		User registerUser = new User(id, firstName, lastName, email, password, false);
 
 		if (!validationService.validate(registerUser)) {
-			System.out.println("Validation Error. Please check your informations.");
+			System.out.println("Validation Error. Please check your informations!");
 			return;
 		}
 		if (!(userService.getByEmail(email) == null)) {
-			System.out.println("This email address is used.");
+			System.out.println("This email address is used!");
 			return;
 		}
-		emailLinkService.sendEmail(email, "Login verification mail");
+		emailLinkService.sendEmail(email);
+		if (matchCode(123) == false) {
+			System.out.println("Codes not matched!");
+			return;
+		}
+		System.out.println("Codes matched.");
 		userService.create(registerUser);
-		System.out.println("Create operation is successful. Please check your email address.");
+		System.out.println("Create operation is successful. ");
 	}
 
 	@Override
 	public void logIn(String email2, String password2) {
-		User logInUser=userService.getByEmailAndPassword(email2, password2);
-		
-		if(logInUser==null) {
+		User logInUser = userService.getByEmailAndPassword(email2, password2);
+
+		if (logInUser == null) {
 			System.out.println("You've entered wrong password or email.");
 			return;
 		}
@@ -48,8 +53,19 @@ public class AuthorizeManager implements AuthorizeService {
 			System.out.println("Validation Error. Please check your informations.");
 			return;
 		}
-		System.out.println("You are in! Welcome "+logInUser.getPassword()+logInUser.getEmail());
+		System.out.println("You are in! Welcome " + logInUser.getPassword() + logInUser.getEmail());
+	}
+
+	@Override
+	public boolean matchCode(int code) {
+		if (code == 123)
+			return true;
+
+		else
+			return false;
 
 	}
+
+
 
 }
