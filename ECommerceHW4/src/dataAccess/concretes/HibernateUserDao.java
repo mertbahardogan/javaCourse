@@ -27,7 +27,6 @@ public class HibernateUserDao implements UserDao {
 	@Override
 	public void delete(User user) {
 		users.removeIf(obj -> obj.getId() == user.getId());
-		System.out.println("FIX THIS ROW");
 	}
 
 	@Override

@@ -6,6 +6,6 @@ public class GoogleAuthorizeManager {
 	}
 	
 	public void LogIn(String email,String password) {
-		System.out.println("Login is successful with Google "+password);
+		System.out.println("Login is successful with Google "+email);
 	}
 }
